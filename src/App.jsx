@@ -102,29 +102,62 @@ const skillGroups = [
     },
 ]
 
+
 const experiences = [
     {
         role: 'Freelance Frontend Developer',
-        organization: 'Freelance',
+        organization: 'Freelance · Cairo',
+        period: 'September 2025 – Present',
         description:
-            'Developed responsive websites and interactive user interfaces based on project requirements.',
+            'Developing responsive and interactive websites based on client requirements.',
         points: [
-            'Built responsive interfaces using React, HTML, and CSS.',
-            'Implemented website layouts, styling, and interactive components.',
-            'Managed website development from initial design to implementation.',
+            'Built user interfaces using React, HTML5, and CSS3.',
+            'Implemented responsive layouts, styling, and interactive components.',
+            'Ensured cross-device compatibility and optimized user experience.',
+            'Managed website development from initial design to final implementation.',
         ],
     },
     {
-        role: 'Backend Developer',
-        organization: 'Al-Ahram Newspaper',
+        role: 'Software Testing Trainee',
+        organization: 'DEPI · Cairo',
+        period: 'November 2024 – May 2025',
         description:
-            'Contributed to backend development using Node.js.',
+            'Completed a six-month professional training program in software testing and quality assurance.',
         points: [
-            'Worked on server-side application logic and backend functionality.',
-            'Contributed to backend components and application integration.',
+            'Studied software testing fundamentals, methodologies, and SDLC.',
+            'Performed functional, regression, and exploratory manual testing.',
+            'Designed and executed test cases and documented software defects.',
+            'Gained foundational automation testing experience using Selenium.',
+        ],
+    },
+    {
+        role: 'Backend Development Intern',
+        organization: 'Al-Ahram Newspaper · Cairo',
+        period: 'June 2024 – July 2024',
+        description:
+            'Contributed to backend development and server-side application functionality.',
+        points: [
+            'Worked with Node.js on backend development.',
+            'Contributed to server-side logic and backend functionality.',
+            'Worked on data handling, API development, and application integration.',
+            'Collaborated on implementing and maintaining backend components.',
+        ],
+    },
+    {
+        role: 'Cloud Computing Intern',
+        organization: 'Microsoft / Webhelp · Cairo',
+        period: 'July 2023 – September 2023',
+        description:
+            'Developed foundational knowledge of cloud computing and Microsoft Azure services.',
+        points: [
+            'Studied Azure architecture, infrastructure, storage, and networking.',
+            'Explored cloud security, identity management, governance, and compliance.',
+            'Learned about cloud deployment models and resource management.',
+            'Successfully obtained Microsoft Azure Fundamentals (AZ-900).',
         ],
     },
 ]
+
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -465,51 +498,88 @@ function Projects() {
     )
 }
 
+
 function Education() {
+    const education = [
+        {
+            degree: "Master's Degree in Bioinformatics",
+            institution: 'Ain Shams University',
+            date: 'October 2026',
+            details: ['Bioinformatics'],
+        },
+        {
+            degree: 'Bachelor of Science in Computer Science',
+            institution: 'Ain Shams University',
+            date: 'October 2022 – July 2026',
+            details: [
+                'CGPA: 3.64 / 4.0',
+                'Ranked 2nd in Department',
+                'Bioinformatics background',
+            ],
+        },
+        {
+            degree: 'Bachelor of Science in Computer Science',
+            institution: 'University of East London',
+            date: 'October 2022 – July 2026',
+            details: [
+                'CGPA: 3.64 / 4.0',
+                'Ranked 2nd in Department',
+            ],
+        },
+    ]
+
     return (
         <section className="section education-section" id="education">
             <SectionHeading
                 number="05"
                 label="EDUCATION"
                 title={<>My academic <em>background.</em></>}
+                description="An academic journey combining computer science and bioinformatics."
             />
 
-            <div className="education-card">
-                <div className="education-icon">
-                    <GraduationCap size={30} />
-                </div>
-                <div className="education-details">
-                    <span className="education-date">2022 — 2026</span>
-                    <h3>Bachelor of Science in Computer Science</h3>
-                    <h4>Ain Shams University</h4>
-                    <p>Faculty of Computer and Information Sciences · Cairo, Egypt</p>
-                    <div className="education-highlights">
-                        <span>CGPA: 3.64 / 4.0</span>
-                        <span>Minor: Bioinformatics</span>
-                        <span>Ranked 2nd in Department</span>
-                    </div>
-                </div>
+            <div className="education-list">
+                {education.map((item, index) => (
+                    <article className="education-card" key={`${item.institution}-${index}`}>
+                        <div className="education-icon">
+                            <GraduationCap size={30} />
+                        </div>
+
+                        <div className="education-details">
+                            <span className="education-date">{item.date}</span>
+                            <h3>{item.degree}</h3>
+                            <h4>{item.institution}</h4>
+
+                            <div className="education-highlights">
+                                {item.details.map((detail) => (
+                                    <span key={detail}>{detail}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
+                ))}
             </div>
         </section>
     )
 }
+
+
 
 function Certifications() {
     const items = [
         {
             name: 'Microsoft Azure Fundamentals',
             issuer: 'Microsoft',
-            detail: 'AZ-900 Certification',
+            detail: 'AZ-900 Certification · February 2024',
         },
         {
             name: 'Software Testing Professional Training',
-            issuer: 'Six-month training program',
-            detail: 'Manual & Automation Testing · Selenium',
+            issuer: 'DEPI',
+            detail: 'Six-month program · November 2024 – May 2025',
         },
         {
             name: 'Genomics Data Analysis Workshop',
-            issuer: '57357 Hospital · 2025',
-            detail: 'Genomics and biological data analysis',
+            issuer: '57357 Hospital',
+            detail: 'Genomics and biological data analysis · 2025',
         },
     ]
 
@@ -517,7 +587,7 @@ function Certifications() {
         <section className="section certifications-section" id="certifications">
             <SectionHeading
                 number="06"
-                label="CERTIFICATIONS"
+                label="CERTIFICATIONS & TRAINING"
                 title={<>Learning never <em>stops.</em></>}
             />
 
@@ -527,12 +597,16 @@ function Certifications() {
                         <div className="certification-icon">
                             <Award size={24} />
                         </div>
+
                         <div>
                             <h3>{item.name}</h3>
                             <p>{item.issuer}</p>
                             <span>{item.detail}</span>
                         </div>
-                        <span className="certification-number">0{index + 1}</span>
+
+                        <span className="certification-number">
+                            0{index + 1}
+                        </span>
                     </article>
                 ))}
             </div>
