@@ -1,0 +1,58 @@
+:root {
+    font-family: 'DM Sans', sans-serif;
+    color: #f3eff0;
+    background: #100e10;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+
+    --bg: #100e10;
+    --surface: #191518;
+    --surface-light: #211b20;
+    --text: #f3eff0;
+    --muted: #a69ba2;
+    --accent: #a94b68;
+    --accent-light: #d17a93;
+    --border: rgba(255, 255, 255, 0.09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    min-width: 320px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
